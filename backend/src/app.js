@@ -21,7 +21,10 @@ connectDB();
 // Security middleware
 app.use(helmet());
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: [
+        "http://localhost:5173",
+        "https://expense-tracker-omega-beryl-57.vercel.app"
+    ],
     credentials: true
 }));
 
