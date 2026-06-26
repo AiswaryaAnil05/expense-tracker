@@ -25,13 +25,14 @@ const ProtectedRoute = ({ children }) => {
 
 const AppLayout = ({ children }) => (
     <div className="flex h-screen bg-gray-50 dark:bg-[#0a0a0a] relative overflow-hidden">
-        <Sidebar />
+        <div className="hidden md:flex">
+            <Sidebar />
+        </div>
         <main className="flex-1 overflow-y-auto relative z-10">
             {children}
         </main>
     </div>
 );
-
 export default function App() {
     return (
         <ThemeProvider>
