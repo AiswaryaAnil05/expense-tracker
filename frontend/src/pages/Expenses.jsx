@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import api from "../utils/api";
 import toast from "react-hot-toast";
 
@@ -23,10 +24,21 @@ export default function Expenses() {
     const [editingExpense, setEditingExpense] = useState(null);
     const [filter, setFilter] = useState({ category: "", startDate: "", endDate: "" });
     const [form, setForm] = useState({ title: "", amount: "", category: "Food", date: "", notes: "" });
+    const location = useLocation();  //new
+
 
     useEffect(() => {
-        fetchExpenses();
-    }, []);
+    fetchExpenses();
+    
+    // Check if we should open the form
+    if (location.state?.openForm) {
+        setShowForm(true);
+        setEditingExpense(null);
+        setForm({ title: "", amount: "", category: "Food", date: "", notes: "" });
+        // Clear the state so it doesn't reopen on refresh
+        window.history.replaceState({}, document.title);
+    }
+}, [location.state]);
 
     const fetchExpenses = async () => {
         try {
@@ -128,12 +140,14 @@ export default function Expenses() {
                             </svg>
                             Export CSV
                         </button>
-                        <button 
-                            onClick={() => { setShowForm(true); setEditingExpense(null); setForm({ title: "", amount: "", category: "Food", date: "", notes: "" }); }}
-                            className="flex items-center gap-2 bg-[#059669] text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-[#047857] transition shadow-sm hover:shadow-md"
-                        >
-                            <span className="text-lg leading-none">+</span> Add Expense
-                        </button>
+                        {!showForm && (
+                            <button 
+                                onClick={() => { setShowForm(true); setEditingExpense(null); setForm({ title: "", amount: "", category: "Food", date: "", notes: "" }); }}
+                                className="flex items-center gap-2 bg-[#059669] text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-[#047857] transition shadow-sm hover:shadow-md"
+                            >
+                                <span className="text-lg leading-none">+</span> Add Expense
+                            </button>
+                        )}
                     </div>
                 </div>
 

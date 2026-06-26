@@ -61,7 +61,6 @@
 //         </ThemeProvider>
 //     );
 // }
-
 import { BrowserRouter, Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { useAuth } from "./context/AuthContext";

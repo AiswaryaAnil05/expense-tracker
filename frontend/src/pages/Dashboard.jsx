@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     AreaChart, Area, PieChart, Pie, Cell,
     XAxis, YAxis, Tooltip, ResponsiveContainer
@@ -53,6 +53,7 @@ export default function Dashboard() {
     const [loading, setLoading] = useState(true);
     const [recentExpenses, setRecentExpenses] = useState([]);
     const { user } = useAuth();
+    const navigate = useNavigate(); //new
 
     useEffect(() => {
         fetchData();
@@ -108,12 +109,11 @@ export default function Dashboard() {
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Here's your financial overview</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <Link
-                        to="/expenses"
+                    <button
+                        onClick={() => navigate("/expenses", { state: { openForm: true } })}
                         className="flex items-center gap-2 bg-[#059669] text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-[#047857] transition shadow-sm hover:shadow-md"
-                    >
-                        <span className="text-lg leading-none">+</span> Add Expense
-                    </Link>
+>                       <span className="text-lg leading-none">+</span> Add Expense
+                    </button>
                 </div>
             </div>
 
