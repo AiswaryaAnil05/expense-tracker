@@ -1,4 +1,4 @@
-#  Expense Tracker Pro
+#  Expenzo
 
 A full-stack expense management web application built with Node.js, Express, MongoDB, and React.
 
