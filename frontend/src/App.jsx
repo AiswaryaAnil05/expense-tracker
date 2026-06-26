@@ -25,10 +25,10 @@ const ProtectedRoute = ({ children }) => {
 
 const AppLayout = ({ children }) => (
     <div className="flex h-screen bg-gray-50 dark:bg-[#0a0a0a] relative overflow-hidden">
-        <div className="hidden md:flex">
+        <div className="hidden md:flex flex-shrink-0">
             <Sidebar />
         </div>
-        <main className="flex-1 overflow-y-auto relative z-10">
+        <main className="flex-1 min-w-0 overflow-y-auto relative z-10">
             {children}
         </main>
     </div>
