@@ -91,13 +91,13 @@ export default function Login() {
                 </div>
 
                 {/* Demo Credentials */}
-                <div className="mt-6 p-4 bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#2a2a2a] rounded-xl">
+                {/* <div className="mt-6 p-4 bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#2a2a2a] rounded-xl">
                     <p className="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center mb-2">Demo Credentials</p>
                     <div className="flex flex-col gap-1 text-xs text-gray-500 dark:text-gray-500">
                         <span><span className="text-gray-700 dark:text-gray-400">Email:</span> demo@gmail.com</span>
                         <span><span className="text-gray-700 dark:text-gray-400">Password:</span> 123456</span>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
